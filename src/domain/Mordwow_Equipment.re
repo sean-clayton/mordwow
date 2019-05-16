@@ -2,30 +2,29 @@ module Cost = Mordwow_Cost;
 
 type metadata = {
   name: string,
-  description: string,
   cost: Cost.t,
 };
 
 module Wearable = {
   module Head = {
     type t =
-      | Head(metadata);
+      | Head(Cost.t);
 
-    let getCost = (Head({cost})) => cost;
+    let getCost = (Head(cost)) => cost;
   };
 
   module Body = {
     type t =
-      | Body(metadata);
+      | Body(Cost.t);
 
-    let getCost = (Body({cost})) => cost;
+    let getCost = (Body(cost)) => cost;
   };
 
   module Leg = {
     type t =
-      | Leg(metadata);
+      | Leg(Cost.t);
 
-    let getCost = (Leg({cost})) => cost;
+    let getCost = (Leg(cost)) => cost;
   };
 };
 
@@ -56,8 +55,8 @@ module Holdable = {
     };
 
     type turnCap = {
-      x: int,
-      y: int,
+      x: float,
+      y: float,
     };
 
     type base = {
@@ -73,6 +72,10 @@ module Holdable = {
       canCombo: bool,
       hitKnockback: int,
       woodDamage: int,
+      stoneDamage: int,
+      isBlockHeld: bool,
+      canFlinch: bool,
+      blockMovementRestriction: option(string),
       length: int,
     };
 
@@ -103,35 +106,35 @@ module Holdable = {
 
   module ThrowableMeleeWeapon = {
     type t = {
-      meleeStats: MeleeWeapon.t,
+      primaryGrip: MeleeWeapon.t,
       throw: RangedWeapon.t,
     };
   };
 
   module OneHanded = {
     type t = {
-      meleeStats: MeleeWeapon.t,
-      altStats: option(MeleeWeapon.t),
+      primaryGrip: MeleeWeapon.t,
+      altGrip: option(MeleeWeapon.t),
     };
   };
 
   module TwoHanded = {
     type t = {
-      meleeStats: MeleeWeapon.t,
-      altStats: option(MeleeWeapon.t),
+      primaryGrip: MeleeWeapon.t,
+      altGrip: option(MeleeWeapon.t),
     };
   };
 
   module ThrowableOneHanded = {
     type t = {
-      meleeStats: MeleeWeapon.t,
+      primaryGrip: MeleeWeapon.t,
       throwDamage: Damage.t,
     };
   };
 
   module ThrowableTwoHanded = {
     type t = {
-      meleeStats: MeleeWeapon.t,
+      primaryGrip: MeleeWeapon.t,
       throwDamage: Damage.t,
     };
   };
@@ -158,8 +161,19 @@ module Holdable = {
     | Throwable(metadata, Throwable.t)
     | Consumable(metadata, Consumable.t);
 
-  let getCost = weapon =>
-    switch (weapon) {
+  let getName = wieldable =>
+    switch (wieldable) {
+    | OneHanded({name}, _) => name
+    | TwoHanded({name}, _) => name
+    | ThrowableOneHanded({name}, _) => name
+    | ThrowableTwoHanded({name}, _) => name
+    | Ranged({name}, _) => name
+    | Throwable({name}, _) => name
+    | Consumable({name}, _) => name
+    };
+
+  let getCost = wieldable =>
+    switch (wieldable) {
     | OneHanded({cost}, _) => cost
     | TwoHanded({cost}, _) => cost
     | ThrowableOneHanded({cost}, _) => cost

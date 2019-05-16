@@ -1,0 +1,164 @@
+{
+  "equipment": [
+    {
+      "_id": "estoc",
+      "kind": "2h",
+      "name": "Estoc",
+      "primary_grip": {
+        "strike": {
+          "damage": {
+            "head_damage": [60, 55, 38, 30],
+            "body_damage": [45, 40, 28, 20],
+            "leg_damage": [40, 30, 18, 10]
+          },
+          "speed": {
+            "windup": 525,
+            "combo": 700,
+            "release": 525,
+            "recovery": 700
+          },
+          "block_view_tolerances": {
+            "up": 40,
+            "left_right": 55,
+            "down": 55
+          },
+          "turn_cap": {
+            "x": 300.0,
+            "y": 210.0
+          },
+          "miss_cost": 8,
+          "feint_cost": 10,
+          "morph_cost": 7,
+          "stamina_drain": 16,
+          "parry_drain_negation": 12,
+          "stop_on_hit": false,
+          "can_combo": true,
+          "hit_knockback": 105,
+          "wood_damage": 15,
+          "stone_damage": 2,
+          "is_block_held": false,
+          "block_movement_restriction": null,
+          "can_flinch": true,
+          "length": 120
+        },
+        "thrust": {
+          "damage": {
+            "head_damage": [100, 70, 66, 51],
+            "body_damage": [70, 55, 51, 36],
+            "leg_damage": [60, 40, 36, 21]
+          },
+          "speed": {
+            "windup": 525,
+            "combo": 700,
+            "release": 525,
+            "recovery": 700
+          },
+          "block_view_tolerances": {
+            "up": 40,
+            "left_right": 55,
+            "down": 55
+          },
+          "turn_cap": {
+            "x": 325.0,
+            "y": 227.0
+          },
+          "miss_cost": 8,
+          "feint_cost": 10,
+          "morph_cost": 7,
+          "stamina_drain": 18,
+          "parry_drain_negation": 12,
+          "stop_on_hit": false,
+          "can_combo": true,
+          "hit_knockback": 130,
+          "wood_damage": 15,
+          "stone_damage": 2,
+          "is_block_held": false,
+          "block_movement_restriction": null,
+          "can_flinch": true,
+          "length": 120
+        }
+      },
+      "altGrip": {
+        "strike": {
+          "damage": {
+            "head_damage": [74, 63, 61, 60],
+            "body_damage": [44, 43, 48, 40],
+            "leg_damage": [39, 33, 31, 30]
+          },
+          "speed": {
+            "windup": 600,
+            "combo": 825,
+            "release": 525,
+            "recovery": 700
+          },
+          "block_view_tolerances": {
+            "up": 40,
+            "left_right": 55,
+            "down": 55
+          },
+          "turn_cap": {
+            "x": 312.5,
+            "y": 218.75
+          },
+          "miss_cost": 8,
+          "feint_cost": 10,
+          "morph_cost": 7,
+          "stamina_drain": 18,
+          "parry_drain_negation": 12,
+          "stop_on_hit": true,
+          "can_combo": true,
+          "hit_knockback": 120,
+          "wood_damage": 15,
+          "stone_damage": 2,
+          "is_block_held": false,
+          "block_movement_restriction": null,
+          "can_flinch": true,
+          "length": 68
+        },
+        "thrust": {
+          "damage": {
+            "head_damage": [44, 43, 41, 40],
+            "body_damage": [29, 28, 26, 25],
+            "leg_damage": [24, 18, 16, 15]
+          },
+          "speed": {
+            "windup": 525,
+            "combo": 700,
+            "release": 525,
+            "recovery": 700
+          },
+          "block_view_tolerances": {
+            "up": 40,
+            "left_right": 55,
+            "down": 55
+          },
+          "turn_cap": {
+            "x": 325.0,
+            "y": 227.5
+          },
+          "miss_cost": 7,
+          "feint_cost": 10,
+          "morph_cost": 7,
+          "stamina_drain": 17,
+          "parry_drain_negation": 12,
+          "stop_on_hit": true,
+          "can_combo": true,
+          "hit_knockback": 115,
+          "wood_damage": 15,
+          "stone_damage": 2,
+          "is_block_held": false,
+          "block_movement_restriction": null,
+          "can_flinch": true,
+          "length": 68
+        }
+      }
+    }
+  ],
+  "perks": [
+    {
+      "name": "Bloodlust",
+      "cost": 5,
+      "description": "Gain full health on melee kills"
+    }
+  ]
+}
