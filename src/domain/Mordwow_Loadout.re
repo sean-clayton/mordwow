@@ -46,33 +46,18 @@ let getTotalCost = loadout => {
     | None => 0
     };
 
-  let equipment1Cost =
-    switch (loadout.equipment1) {
-    | Some(equipment) => equipment->Equipment.Holdable.getCost
-    | None => 0
-    };
-
-  let equipment2Cost =
-    switch (loadout.equipment2) {
-    | Some(equipment) => equipment->Equipment.Holdable.getCost
-    | None => 0
-    };
-
-  let equipment3Cost =
-    switch (loadout.equipment3) {
-    | Some(equipment) => equipment->Equipment.Holdable.getCost
-    | None => 0
-    };
+  let equipmentCost =
+    [loadout.equipment1, loadout.equipment2, loadout.equipment3]
+    ->List.reduce(0, (acc, eq) =>
+        switch (eq) {
+        | Some(equipment) => acc + equipment->Equipment.Holdable.getCost
+        | None => 0
+        }
+      );
 
   let perksCost = loadout.perks->List.reduce(0, (acc, {cost}) => acc + cost);
 
-  headCost
-  + bodyCost
-  + legCost
-  + equipment1Cost
-  + equipment2Cost
-  + equipment3Cost
-  + perksCost;
+  headCost + bodyCost + legCost + equipmentCost + perksCost;
 };
 
 let getRemainingPoints = loadout => maxLoadoutCost - loadout->getTotalCost;

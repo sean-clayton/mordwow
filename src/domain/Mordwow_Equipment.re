@@ -1,6 +1,7 @@
 module Cost = Mordwow_Cost;
 
 type metadata = {
+  _id: string,
   name: string,
   cost: Cost.t,
 };
@@ -161,8 +162,8 @@ module Holdable = {
     | Throwable(metadata, Throwable.t)
     | Consumable(metadata, Consumable.t);
 
-  let getName = wieldable =>
-    switch (wieldable) {
+  let getName = holdable =>
+    switch (holdable) {
     | OneHanded({name}, _) => name
     | TwoHanded({name}, _) => name
     | ThrowableOneHanded({name}, _) => name
@@ -172,8 +173,8 @@ module Holdable = {
     | Consumable({name}, _) => name
     };
 
-  let getCost = wieldable =>
-    switch (wieldable) {
+  let getCost = holdable =>
+    switch (holdable) {
     | OneHanded({cost}, _) => cost
     | TwoHanded({cost}, _) => cost
     | ThrowableOneHanded({cost}, _) => cost
